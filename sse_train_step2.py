@@ -44,7 +44,7 @@ df_train = pd.read_csv(data_path +'train_masks.csv')
 ids_all = df_train['img'].map(lambda s: s.split('.')[0])
 ids_test = ids_all[900:1000]
 ids_train = ids_all[1000:]
-print ("train samples: ", len(ids_train))
+print("train samples: ", len(ids_train))
 
 
 
@@ -307,8 +307,8 @@ def train_model_unet_sse(epochs):
         X_val = train_data[perm[:nVal]]
         Y_val = train_target[perm[:nVal]]
 
-        print 'Training and Validation Samples: '
-        print X_train.shape, Y_train.shape, X_val.shape, Y_val.shape
+        print('Training and Validation Samples: ')
+        print(X_train.shape, Y_train.shape, X_val.shape, Y_val.shape)
 
         # fits the model on batches with real-time data augmentation:
         model2.fit_generator(datagen.flow(X_train, Y_train, batch_size=16),

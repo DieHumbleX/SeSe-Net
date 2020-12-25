@@ -303,8 +303,8 @@ def train_model_resnet(nfolds=1, nb_epoch=10):
         print('Split train: ', len(X_train), len(Y_train))
         print('Split valid: ', len(X_val), len(Y_val))
 
-        print 'Training and Validation Samples: '
-        print X_train.shape, Y_train.shape, X_val.shape, Y_val.shape
+        print('Training and Validation Samples: ')
+        print(X_train.shape, Y_train.shape, X_val.shape, Y_val.shape)
 
         if res_refine == True:
 		model = load_model('weights/weights_1.hdf5')
@@ -358,8 +358,8 @@ def train_model_unet(epochs):
             horizontal_flip = False)	
 	
     for epoch in range(epochs):
-        print 'Training and Validation Samples: '
-        print X_train.shape, Y_train.shape, X_val.shape, Y_val.shape
+        print('Training and Validation Samples: ')
+        print(X_train.shape, Y_train.shape, X_val.shape, Y_val.shape)
 
         # fits the model on batches with real-time data augmentation:
         model.fit_generator(datagen.flow(X_train, Y_train, batch_size=16),
