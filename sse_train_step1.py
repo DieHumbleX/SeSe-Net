@@ -307,33 +307,33 @@ def train_model_resnet(nfolds=1, nb_epoch=10):
         print(X_train.shape, Y_train.shape, X_val.shape, Y_val.shape)
 
         if res_refine == True:
-		model = load_model('weights/weights_1.hdf5')
-	else:
-		model = build_model_resnet50()
-	
-        best_model_file = "./weights/weights_1.hdf5"
-        best_model = ModelCheckpoint(best_model_file, monitor='val_loss', verbose = 1, save_best_only = True)
+    		model = load_model('weights/weights_1.hdf5')
+    	else:
+    		model = build_model_resnet50()
+    	
+            best_model_file = "./weights/weights_1.hdf5"
+            best_model = ModelCheckpoint(best_model_file, monitor='val_loss', verbose = 1, save_best_only = True)
 
-        # this is the augmentation configuration we will use for training
-        datagen = ImageDataGenerator(
-                #rescale=1./255,
-                shear_range=0.0,
-                zoom_range=0.1,
-                rotation_range=0.0,
-                width_shift_range=0.0625,
-                height_shift_range=0.0625,
-                vertical_flip = True,
-                horizontal_flip = False)
+            # this is the augmentation configuration we will use for training
+            datagen = ImageDataGenerator(
+                    #rescale=1./255,
+                    shear_range=0.0,
+                    zoom_range=0.1,
+                    rotation_range=0.0,
+                    width_shift_range=0.0625,
+                    height_shift_range=0.0625,
+                    vertical_flip = True,
+                    horizontal_flip = False)
 
-        # fits the model on batches with real-time data augmentation:
-        model.fit_generator(datagen.flow(X_train, Y_train, batch_size=16),
-                    samples_per_epoch=len(X_train),
-                    nb_epoch=nb_epoch,
-                    verbose=1,
-                    validation_data = (X_val, Y_val),
-                    #validation_data = datagen.flow(X_val, Y_val, batch_size=16),
-                    #nb_val_samples = len(X_val),
-                    callbacks = [best_model])
+            # fits the model on batches with real-time data augmentation:
+            model.fit_generator(datagen.flow(X_train, Y_train, batch_size=16),
+                        samples_per_epoch=len(X_train),
+                        nb_epoch=nb_epoch,
+                        verbose=1,
+                        validation_data = (X_val, Y_val),
+                        #validation_data = datagen.flow(X_val, Y_val, batch_size=16),
+                        #nb_val_samples = len(X_val),
+                        callbacks = [best_model])
 
 
 def train_model_unet(epochs):
