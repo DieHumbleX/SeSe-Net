@@ -307,10 +307,10 @@ def train_model_resnet(nfolds=1, nb_epoch=10):
         print(X_train.shape, Y_train.shape, X_val.shape, Y_val.shape)
 
         if res_refine == True:
-    		model = load_model('weights/weights_1.hdf5')
-    	else:
-    		model = build_model_resnet50()
-    	
+            model = load_model('weights/weights_1.hdf5')
+        else:
+            model = build_model_resnet50()
+
             best_model_file = "./weights/weights_1.hdf5"
             best_model = ModelCheckpoint(best_model_file, monitor='val_loss', verbose = 1, save_best_only = True)
 
