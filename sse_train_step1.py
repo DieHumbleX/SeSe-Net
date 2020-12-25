@@ -470,10 +470,9 @@ def gen_0_1(ids_input):
 
 if res_refine == False:
 	# train a unet model and generate the masks for resnet
-	train_model_unet(unet_ep)
-        model = ''
-        unet_predict(model,
+    train_model_unet(unet_ep)
+    model = ''
+    unet_predict(model,ids_test)
 
 # train a resent for regression
 train_model_resnet(1,resnet_ep)
-
